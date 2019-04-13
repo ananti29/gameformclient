@@ -10,6 +10,7 @@
         <router-link :to="{ name: 'DeleteGame', params: {id: game._id } }" class="app_delete_btn">Delete game</router-link>
       </p>
     </div>
+    <p v-if="!games.length">No data in games. You can create one by going to Create Game</p>
   </div>
 </template>
 <script>
