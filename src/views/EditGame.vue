@@ -1,6 +1,6 @@
 <template>
   <div class="games">
-    <h1>Edit Game</h1>
+    <h1 class="title">Edit Game</h1>
       <div class="form">
         <div>
           <input type="text" name="gamename" placeholder="Enter game name." v-model="gamename">
@@ -17,7 +17,7 @@
           <textarea rows="15" cols="15" placeholder="Add your opinion about the game, progress or anything else that comes to mind." v-model="notes"></textarea>
         </div>
         <div>
-          <button class="app_game_btn" @click="updateGame">Update</button>
+          <button class="app_edit_btn" @click="updateGame">Edit</button>
         </div>
       </div>
   </div>
@@ -61,25 +61,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.form input, .form textarea {
-  width: 500px;
-  padding: 10px;
-  border: 1px solid #e0dede;
-  outline: none;
-  font-size: 12px;
+@import "../scss/variables";
+@import "../scss/buttons";
+@import "../scss/forms";
+
+.title {
+  color: $titlecolor;
 }
-.form div {
-  margin: 20px;
-}
-.app_game_btn {
-  background: #009900;
-  color: #fff;
-  padding: 10px 80px;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bold;
-  width: 520px;
-  border: none;
-  cursor: pointer;
+
+.app_edit_btn {
+    width: 500px;
+  }
+
+@media (max-width: 767px) {
+  .form input, .form textarea {
+    width: 100%;
+    margin-left: -10px;
+  }
+  .app_edit_btn {
+    width: 100%;
+  }
 }
 </style>

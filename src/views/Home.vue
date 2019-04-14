@@ -2,7 +2,7 @@
 <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 class="title">Welcome to gameform application</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -34,19 +34,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
-</script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../scss/variables";
+
+.title {
+  color: $titlecolor;
+}
 h3 {
   margin: 40px 0 0;
+  color: $titlecolor;
 }
 ul {
   list-style-type: none;
@@ -57,6 +54,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: $linkcolor;
 }
 </style>

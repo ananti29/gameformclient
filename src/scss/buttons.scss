@@ -1,0 +1,42 @@
+$btncolor: #fff;
+$btnpadding: 10px 25px;
+$btnfontsize: 12px;
+$btndisplay: inline-block;
+$btntransform: uppercase;
+$btnweight: bold;
+
+.app_create_btn {
+    background: #009900;
+    color: $btncolor;
+    padding: $btnpadding;
+    text-transform: $btntransform;
+    font-size: $btnfontsize;
+    font-weight: $btnweight;
+    border: none;
+    cursor: pointer;
+    display: $btndisplay;
+  }
+.app_edit_btn {
+    background: #4d7ef7;
+    color: $btncolor;
+    padding: $btnpadding;
+    font-size: $btnfontsize;
+    text-transform: $btntransform;
+    font-weight: $btnweight;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    display: $btndisplay;
+}
+.app_delete_btn {
+    background: #cc0000;
+    color: $btncolor;
+    padding: $btnpadding;
+    font-size: $btnfontsize;
+    text-transform: $btntransform;
+    font-weight: $btnweight;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    display: $btndisplay;
+}

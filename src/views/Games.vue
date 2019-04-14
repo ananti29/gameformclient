@@ -1,8 +1,8 @@
 <template>
   <div class="games">
-    <h1>Games</h1>
+    <h1 class="title">Games</h1>
     <div class="card" v-for="game of games">
-      <p>
+      <p class= "gameslist">
         <span> <b>Game name:</b> {{ game.gamename }}</span> <br> <br>
         <span> <b>Platform:</b> {{ game.platform }}</span> <br> <br>
         <span> <b>Notes:</b> {{ game.notes }}</span> <br> <br> <br>
@@ -35,37 +35,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-   .card {
+@import "../scss/variables";
+@import "../scss/buttons";
+
+    .title {
+      color: $titlecolor;
+    }
+    .app_edit_btn {
+      margin-right: 30px;
+    }
+    .card {
        width: 50em;
        margin-left: auto;
        margin-right: auto;
        padding-top: 1em;
        padding-bottom: 1em;
        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+   .gameslist {
+     text-align: left;
+     display: inline-block;
    }
-  .app_edit_btn {
-    background: #4d7ef7;
-    color: #fff;
-    padding: 10px 25px;
-    margin-right: 30px;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: none;
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
-}
-.app_delete_btn {
-    background: #cc0000;
-    color: #fff;
-    padding: 10px 25px;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: none;
-    text-decoration: none;
-    cursor: pointer;
-    display: inline-block;
+@media (max-width: 767px) {
+   .card {
+     width: 100%;
+   }
 }
 </style>
