@@ -3,10 +3,10 @@
     <h1 class="title">Create Game</h1>
       <div class="form">
         <div>
-          <input type="text" name="gamename" placeholder="Enter game name." v-model="gamename">
+          <input type="text" required=true name="gamename" placeholder="Enter game name." v-model="gamename">
         </div>
         <div>
-          <select name="platform" v-model="platform">
+          <select required=true name="platform" v-model="platform">
               <option>Xbox</option>
               <option>Playstation</option>
               <option>PC</option>
@@ -19,6 +19,7 @@
         <div>
           <button class="app_create_btn" @click="addGame">Create</button>
         </div>
+        <p v-show=errormessage> {{errormessage}} </p>
       </div>
   </div>
 </template>
@@ -31,17 +32,25 @@ export default {
     return {
       gamename: '',
       platform: 'Xbox',
-      notes: ''
+      notes: '',
+      errormessage: ''
     }
   },
   methods: {
     async addGame () {
-      await GamesService.addGame({
-        gamename: this.gamename,
-        platform: this.platform,
-        notes: this.notes
-      })
-      this.$router.push({ name: 'Games' })
+      this.errormessage = ''
+      if (this.platform === 'Xbox' || this.platform === 'Playstation' || this.platform === 'PC') {
+        this.errormessage = ''
+        await GamesService.addGame({
+          gamename: this.gamename,
+          platform: this.platform,
+          notes: this.notes
+        })
+        this.$router.push({ name: 'Games' })
+      }
+      if (this.platform !== 'Xbox' || this.platform !== 'Playstation' || this.platform !== 'PC') {
+        this.errormessage = 'Platform value needs to be Xbox, Playstation or PC'
+      }
     }
   }
 }

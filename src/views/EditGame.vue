@@ -3,10 +3,10 @@
     <h1 class="title">Edit Game</h1>
       <div class="form">
         <div>
-          <input type="text" name="gamename" placeholder="Enter game name." v-model="gamename">
+          <input type="text" required=true name="gamename" placeholder="Enter game name." v-model="gamename">
         </div>
         <div>
-          <select name="platform" v-model="platform">
+          <select name="platform" required=true v-model="platform">
               <option>Xbox</option>
               <option>Playstation</option>
               <option>PC</option>
@@ -19,6 +19,7 @@
         <div>
           <button class="app_edit_btn" @click="updateGame">Edit</button>
         </div>
+         <p v-show=errormessage> {{errormessage}} </p>
       </div>
   </div>
 </template>
@@ -31,7 +32,8 @@ export default {
     return {
       gamename: '',
       platform: 'Xbox',
-      notes: ''
+      notes: '',
+      errormessage: ''
     }
   },
   mounted () {
@@ -48,13 +50,18 @@ export default {
       // this.$router.push({ name: 'Games' })
     },
     async updateGame () {
-      await GamesService.updateGame({
-        id: this.$route.params.id,
-        gamename: this.gamename,
-        platform: this.platform,
-        notes: this.notes
-      })
-      this.$router.push({ name: 'Games' })
+      this.errormessage = ''
+      if (this.platform === 'Xbox' || this.platform === 'Playstation' || this.platform === 'PC') {
+        await GamesService.updateGame({
+          id: this.$route.params.id,
+          gamename: this.gamename,
+          platform: this.platform,
+          notes: this.notes
+        })
+        this.$router.push({ name: 'Games' })
+      } if (this.platform !== 'Xbox' || this.platform !== 'Playstation' || this.platform !== 'PC') {
+        this.errormessage = 'Platform value needs to be Xbox, Playstation or PC'
+      }
     }
   }
 }
